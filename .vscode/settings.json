@@ -1,0 +1,7 @@
+{
+    "python.testing.pytestArgs": [
+        "pythonFrameworkPytest/test_e2eTestFramework.py"
+    ],
+    "python.testing.unittestEnabled": false,
+    "python.testing.pytestEnabled": true
+}
