@@ -19,7 +19,8 @@ def pytest_addoption(parser):
 @pytest.fixture( scope="function" )
 def browserInstance(request):
     global driver
-    browser_name = request.config.getoption( "browser_name" )
+    #browser_name = request.config.getoption( "browser_name" )
+    browser_name = os.environ["BROWSER"]
     #service_obj = Service()
     chrome_service = ChromeService(ChromeDriverManager(chrome_type=ChromeType.CHROMIUM).install())
     browser_options = Options()
