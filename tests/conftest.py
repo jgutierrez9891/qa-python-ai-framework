@@ -44,7 +44,7 @@ def pytest_runtest_makereport(item):
             reports_dir = os.path.join( os.path.dirname( __file__ ), 'reports' )
             file_name = os.path.join( reports_dir, report.nodeid.replace( "::", "_" ) + ".png" )
             print( "file name is " + file_name )
-            _capture_screenshot( file_name )
+            #_capture_screenshot( file_name )
             if file_name:
                 html = '<div><img src="%s" alt="screenshot" style="width:304px;height:228px;" ' \
                        'onclick="window.open(this.src)" align="right"/></div>' % file_name
