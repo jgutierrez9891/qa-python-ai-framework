@@ -17,8 +17,6 @@ jobs:
           python-version: ${{ matrix.python-version }}
       - name: Remove Chrome
         run: sudo apt purge google-chrome-stable
-      - name: Remove default Chromium
-        run: sudo apt purge chromium-browser
       - name: Install a new Chromium
         run: sudo apt install -y chromium-browser    
       - name: Install dependencies  
@@ -36,4 +34,4 @@ jobs:
         if: always() # Always upload, even if tests fail
         with:
           name: test-report
-          path: reports/ # Replace with the actual path
+          path: tests/reports/

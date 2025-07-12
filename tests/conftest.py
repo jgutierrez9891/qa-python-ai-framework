@@ -39,7 +39,7 @@ def browserInstance(request):
         driver = webdriver.Chrome(service=ChromeService(ChromeDriverManager().install()),options=chrome_options)
     elif browser_name == "firefox":
         #driver = webdriver.Firefox( service=service_obj )
-        driver = webdriver.Firefox(service=ChromeService(GeckoDriverManager().install()))
+        driver = webdriver.Firefox(service=ChromeService(GeckoDriverManager().install()),options=chrome_options)
     elif browser_name == "chromium":
         driver = webdriver.Chrome(service=chrome_service,options=chrome_options)
 
