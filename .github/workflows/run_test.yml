@@ -41,7 +41,7 @@ jobs:
           echo "Browser: $BROWSER"
           coverage run -m pytest  -v -s
         env:
-            BROWSER: ${{ inputs.browser }}
+            BROWSER: ${{ inputs.browser || 'chromium' }}
       - name: Generate Coverage Report  
         run: |  
           coverage report -m
