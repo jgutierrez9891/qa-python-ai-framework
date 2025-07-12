@@ -9,7 +9,7 @@ driver = None
 
 def pytest_addoption(parser):
     parser.addoption(
-        "--browser_name", action="store", default="firefox", help="browser selection"
+        "--browser_name", action="store", default="chrome", help="browser selection"
     )
 
 
@@ -18,9 +18,11 @@ def browserInstance(request):
     global driver
     browser_name = request.config.getoption( "browser_name" )
     #service_obj = Service()
+    chrome_options = webdriver.ChromeOptions()
+    chrome_options.add_argument("headless")
     if browser_name == "chrome":
         #driver = webdriver.Chrome( service=service_obj )
-        driver = webdriver.Chrome(service=ChromeService(ChromeDriverManager().install()))
+        driver = webdriver.Chrome(service=ChromeService(ChromeDriverManager().install()),options=chrome_options)
     elif browser_name == "firefox":
         #driver = webdriver.Firefox( service=service_obj )
         driver = webdriver.Firefox(service=ChromeService(GeckoDriverManager().install()))
