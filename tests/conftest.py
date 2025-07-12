@@ -19,6 +19,7 @@ def browserInstance(request):
     global driver
     browser_name = request.config.getoption( "browser_name" )
     #service_obj = Service()
+    chrome_service = ChromeService(ChromeDriverManager(chrome_type=ChromeType.CHROMIUM).install())
     chrome_options = webdriver.ChromeOptions()
     chrome_options.add_argument("headless")
     if browser_name == "chrome":
@@ -28,7 +29,7 @@ def browserInstance(request):
         #driver = webdriver.Firefox( service=service_obj )
         driver = webdriver.Firefox(service=ChromeService(GeckoDriverManager().install()))
     elif browser_name == "chromium":
-        driver = webdriver.Chrome(service=ChromeService(ChromeDriverManager(chrome_type=ChromeType.CHROMIUM).install()),options=chrome_options)
+        driver = webdriver.Chrome(service=chrome_service,options=chrome_options)
 
     driver.implicitly_wait( 5 )
     driver.get( "https://rahulshettyacademy.com/loginpagePractise/" )
