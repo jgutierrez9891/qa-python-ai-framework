@@ -1,6 +1,19 @@
 name: Run Unit Test via Pytest  
   
-on: [push]  
+on:
+  push:
+    branches:
+      - main
+  workflow_dispatch:
+    inputs:
+      browser:
+        description: "Browser selected to run tests"
+        required: true
+        type: choice
+        options:
+        - android
+        - firefox
+        - chromium
   
 jobs:  
   build:  

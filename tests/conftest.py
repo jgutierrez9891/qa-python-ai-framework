@@ -7,6 +7,7 @@ from webdriver_manager.firefox import GeckoDriverManager
 from webdriver_manager.core.os_manager import ChromeType
 from selenium.webdriver.chrome.options import Options
 from selenium.webdriver.chrome.service import Service as ChromeService
+from selenium.webdriver.firefox.service import Service as FirefoxService
 driver = None
 
 def pytest_addoption(parser):
@@ -21,7 +22,7 @@ def browserInstance(request):
     browser_name = request.config.getoption( "browser_name" )
     #service_obj = Service()
     chrome_service = ChromeService(ChromeDriverManager(chrome_type=ChromeType.CHROMIUM).install())
-    chrome_options = Options()
+    browser_options = Options()
     options = [
     "--headless",
     "--disable-gpu",
@@ -32,16 +33,16 @@ def browserInstance(request):
     "--disable-dev-shm-usage"
     ]
     for option in options:
-        chrome_options.add_argument(option)
+        browser_options.add_argument(option)
 
     if browser_name == "chrome":
         #driver = webdriver.Chrome( service=service_obj )
-        driver = webdriver.Chrome(service=ChromeService(ChromeDriverManager().install()),options=chrome_options)
+        driver = webdriver.Chrome(service=ChromeService(ChromeDriverManager().install()),options=browser_options)
     elif browser_name == "firefox":
         #driver = webdriver.Firefox( service=service_obj )
-        driver = webdriver.Firefox(service=ChromeService(GeckoDriverManager().install()),options=chrome_options)
+        driver = webdriver.Firefox(service=FirefoxService(GeckoDriverManager().install()))
     elif browser_name == "chromium":
-        driver = webdriver.Chrome(service=chrome_service,options=chrome_options)
+        driver = webdriver.Chrome(service=chrome_service,options=browser_options)
 
     driver.implicitly_wait( 5 )
     driver.get( "https://rahulshettyacademy.com/loginpagePractise/" )
