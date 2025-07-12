@@ -10,13 +10,12 @@ import os
 import sys
 
 import pytest
-from selenium import webdriver
 
 sys.path.append( os.path.dirname( os.path.dirname( os.path.abspath( __file__ ) ) ) )
 
 from pageObjects.login import LoginPage
 
-test_data_path = os.path.join('..','data','test_e2eTestFramework.json')
+test_data_path = os.path.join('test_e2eTestFramework.json')
 print(os.path.abspath('conftest.py'))
 with open( test_data_path ) as f:
     test_data = json.load( f )
