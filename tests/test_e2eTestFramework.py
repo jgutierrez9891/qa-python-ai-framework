@@ -15,7 +15,7 @@ sys.path.append( os.path.dirname( os.path.dirname( os.path.abspath( __file__ ) )
 
 from pageObjects.login import LoginPage
 
-test_data_path = os.path.join('test_e2eTestFramework.json')
+test_data_path = os.path.join('tests','test_e2eTestFramework.json')
 print("file is in" + os.path.abspath('test_e2eTestFramework.json'))
 with open( test_data_path ) as f:
     test_data = json.load( f )
